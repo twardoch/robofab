@@ -1,7 +1,9 @@
 #! /usr/bin/env python
 
-import os, sys
-from setuptools import setup, Extension
+import os
+import sys
+
+from setuptools import Extension, setup
 
 try:
 	# load py2exe distutils extension, if available

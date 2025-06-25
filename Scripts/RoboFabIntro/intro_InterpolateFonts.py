@@ -11,9 +11,9 @@
 #	In fontlab: select two .vfb files, the result will be a new .vfb
 #	In NoneLab: select two .ufo files, the result will be a new .ufo
 
-from robofab.world import OpenFont, RFont, RGlyph
-from robofab.pens.pointPen import AbstractPointPen
 from robofab.interface.all.dialogs import GetFolder
+from robofab.pens.pointPen import AbstractPointPen
+from robofab.world import OpenFont, RFont, RGlyph
 
 f = OpenFont(None, "First master")
 g = OpenFont(None, "Second master")

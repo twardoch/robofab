@@ -14,9 +14,9 @@
 # silly pep talk. Let's check it out.
 
 
-from robofab.world import CurrentFont
 # gString has lots of glyph lists, these two will be useful for this demo
-from robofab.gString import uppercase_plain, lowercase_plain
+from robofab.gString import lowercase_plain, uppercase_plain
+from robofab.world import CurrentFont
 
 # (you will need t have a font open in FontLab for this demo)
 font = CurrentFont()

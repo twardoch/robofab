@@ -21,10 +21,13 @@ it will look for a file in FontLab/RoboFab Data/RFPrefs.plist.
 If that file does not exist, it will make it.
 """
 
+import os
+
+from cStringIO import StringIO
+
 from robofab import RoboFabError
 from robofab.plistlib import Plist
-from cStringIO import StringIO
-import os
+
 
 class _PrefObject:
 	

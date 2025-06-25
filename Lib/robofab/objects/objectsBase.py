@@ -15,18 +15,18 @@ do it with the objectsFL and objectsRF.
 """
 
 
-from __future__ import generators
-from __future__ import division
+from __future__ import division, generators
 
-from warnings import warn
-import math
 import copy
+import math
+from warnings import warn
 
-from robofab import ufoLib
-from robofab import RoboFabError
-from robofab.misc.arrayTools import updateBounds, pointInRect, unionRect, sectRect
-from fontTools.pens.basePen import AbstractPen
 from fontTools.pens.areaPen import AreaPen
+from fontTools.pens.basePen import AbstractPen
+
+from robofab import RoboFabError, ufoLib
+from robofab.misc.arrayTools import (pointInRect, sectRect, unionRect,
+                                     updateBounds)
 
 try:
 	set
@@ -3361,6 +3361,7 @@ class BaseKerning(RBaseObject):
 		"""Import kerning pairs from an AFM file. clearExisting=True will
 		clear all exising kerning"""
 		from fontTools.afmLib import AFM
+
 		#a nasty hack to fix line ending problems
 		f = open(path, 'rb')
 		text = f.read().replace('\r', '\n')

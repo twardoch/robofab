@@ -4,6 +4,7 @@
 
 # start using the current font
 from robofab.world import CurrentFont
+
 f = CurrentFont()
 
 # get a clean, empty new font object,

@@ -1,10 +1,8 @@
 import os
-
-
-import tempfile
 import shutil
-import os, time
-from time import strftime, localtime
+import tempfile
+import time
+from time import localtime, strftime
 
 
 class PathDropper(object):
@@ -89,10 +87,10 @@ if __name__ == "__main__":
 
     targetPaths = [
     	#5.0.4.0
-    	"C:\Python24\lib\site-packages",
+    	r"C:\Python24\lib\site-packages",
 
     	#5.0.4.0
-    	"C:\Programme\Python24\lib\site-packages",
+    	r"C:\Programme\Python24\lib\site-packages",
 
     	#5.0.4/Mac(Build 2741),
     	#5.0.2/Mac(Build 2298),

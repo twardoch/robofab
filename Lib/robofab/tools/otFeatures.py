@@ -2,14 +2,14 @@
 
 
 import string
-
-
-from types import StringType, ListType, TupleType
+from types import ListType, StringType, TupleType
 
 from robofab.world import world
+
 if world.inFontLab:
 	from FL import *
 	from fl_cmd import *
+
 from robofab.tools.toolsFL import FontIndex
 
 		#feat = []

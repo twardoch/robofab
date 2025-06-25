@@ -26,21 +26,21 @@
 
 """
 
-from robofab.world import AllFonts, OpenFont
-from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
 from robofab.glifLib import GlyphSet
-from robofab.objects.objectsFL import RGlyph
-from robofab.ufoLib import makeUFOPath, UFOWriter
 from robofab.interface.all.dialogs import ProgressBar
+from robofab.objects.objectsFL import RGlyph
+from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
+from robofab.ufoLib import UFOWriter, makeUFOPath
+from robofab.world import AllFonts, OpenFont
 
 try:
-	from robofab.objects.objectsFL import PostScriptFontHintValues, postScriptHintDataLibKey
+	from robofab.objects.objectsFL import (PostScriptFontHintValues,
+	                                       postScriptHintDataLibKey)
 	supportHints = True
 except ImportError:
 	supportHints = False
 
 import os
-
 
 paths = []
 for f in AllFonts():

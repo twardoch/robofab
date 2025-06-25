@@ -4,8 +4,10 @@
  
 #FLM: Remove overlap from Remote Glyph.
  
+from robofab.tools.remote import receiveGlyph, transmitGlyph
 from robofab.world import OpenFont
-from robofab.tools.remote import transmitGlyph, receiveGlyph, runFontLabRemote
+
+runFontLabRemote
  
 # Pick a UFO font:
 f = OpenFont()

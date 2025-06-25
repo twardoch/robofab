@@ -144,6 +144,7 @@ class PrintingPointPen(AbstractPointPen):
 
 from fontTools.pens.basePen import AbstractPen
 
+
 class PrintingSegmentPen(AbstractPen):
 	def moveTo(self, pt):
 		print "pen.moveTo(%s)" % (pt,)

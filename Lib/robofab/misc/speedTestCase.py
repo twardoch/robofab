@@ -7,10 +7,8 @@
 
 import time
 
-from fontTools.misc import arrayTools
-from fontTools.misc import bezierTools
-
 import numpy
+from fontTools.misc import arrayTools, bezierTools
 
 import robofab.misc.arrayTools as noNumpyArrayTools
 import robofab.misc.bezierTools as noNumpyBezierTools

@@ -7,8 +7,8 @@
 #
 
 import robofab
-from robofab.world import CurrentFont, CurrentGlyph
 from robofab.interface.all.dialogs import Message
+from robofab.world import CurrentFont, CurrentGlyph
 
 # (make sure you have a font opened in FontLab)
 

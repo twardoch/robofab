@@ -4,7 +4,7 @@
 
 # examples of glyphname to glif name transformations
 from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
- 
+
 # a short name
 print glyphNameToShortFileName("accent", None)
  

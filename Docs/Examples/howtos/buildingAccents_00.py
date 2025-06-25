@@ -2,7 +2,7 @@
 # Buildingaccents howto
 # usage examples
 
-from robofab.world import CurrentFont 
+from robofab.world import CurrentFont
 
 f = CurrentFont()
 f.newGlyph("aacute")

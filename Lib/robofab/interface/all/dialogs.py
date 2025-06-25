@@ -8,6 +8,7 @@
 *   FontLab 5.04    10.6    dialogKit       fl internal     * theoretically that should work under windows as well, untested
 *   FontLab 5.1     10.6    dialogKit       fl internal
 *   FontLab 5.1     10.7    raw cocao       fl internal
+*   FontLab VI      M/W     fl internal     fl internal
     Glyphs          any     vanilla         vanilla
     RoboFont        any     vanilla         vanilla
     
@@ -26,13 +27,14 @@
     # this calls the old original legacy dialogs infrastructure:
     from robofab.interface.all.dialogs_legacy import Message
 
+    Modified: 2017-11-20 by Adam Twardoch
+
 """
 
-
-
-# determine platform and application
-import sys, os
+import os
 import platform as _platform
+# determine platform and application
+import sys
 
 __verbose__ = False
 
@@ -41,50 +43,64 @@ platformVersion = None
 application = None
 applicationVersion = None
 
-if sys.platform in (    
+if sys.platform in (
         'mac',
         'darwin',
-        ):
-	platform = "mac"
-	v = _platform.mac_ver()[0]
-	platformVersion = float('.'.join(v.split('.')[:2]))
+):
+    platform = "mac"
+    v = _platform.mac_ver()[0]
+    platformVersion = float('.'.join(v.split('.')[:2]))
 elif sys.platform in (
-        'linux1',
-        'linux2',       # Ubuntu = others?
-        ):
+    'linux1',
+    'linux2',  # Ubuntu = others?
+):
     platform = "linux"
 elif os.name == 'nt':
-	platform = "win"
-	
+    platform = "win"
+
 # determine application
 
 try:
-    # FontLab
-    # alternative syntax to cheat on the FL import filtering in RF
-    __import__("FL")
-    application = "fontlab"
-    #applicationVersion = fl.version
+    # FontLab VI
+    # Note: FontLab VI includes both the 'fontlab' and 'FL' modules
+    # So we are trying 'fontlab' first
+    __import__("fontlab")
+    application = "fontlabvi"
+    # applicationVersion = fl.version
 except ImportError:
     pass
 
 if application is None:
     try:
+        # FontLab Studio 5
+        # alternative syntax to cheat on the FL import filtering in RF
+        __import__("FL")
+        application = "fontlab"
+        # applicationVersion = fl.version
+    except ImportError:
+        pass
+
+if application is None:
+    try:
         # RoboFont
         import mojo
+
         application = 'robofont'
         try:
             from AppKit import NSBundle
+
             b = NSBundle.mainBundle()
             applicationVersion = b.infoDictionary()["CFBundleVersion"]
         except ImportError:
             pass
     except ImportError:
         pass
-    
+
 if application is None:
     try:
         # Glyphs
         import GlyphsApp
+
         application = "glyphs"
     except ImportError:
         pass
@@ -95,10 +111,11 @@ if application is None:
         # note that in some configurations, fontforge can be imported in other pythons as well
         # so the availability of the fontforge module is no garuantee that we are in fontforge.
         import fontforge
+
         application = "fontforge"
     except ImportError:
         pass
-        
+
 pyVersion = sys.version_info[:3]
 
 # with that out of the way, perhaps we can have a look at where we are
@@ -111,20 +128,23 @@ platformApplicationSupport = [
     # switchboard for platform, application, python version -> dialog implementations
     # platform  applicatiom     python      sub module
     # |         |               |           |
-    ('mac',     'fontlab',      (2,3,5),    "dialogs_fontlab_legacy1"),
+    ('mac', 'fontlab', (2, 3, 5), "dialogs_fontlab_legacy1"),
     # because FontLab 5.01 and earlier on 2.3.5 can run EasyDialogs
     # |         |               |           |
     # because FontLab 5.1 on mac 10.6 should theoretically be able to run cocoa dialogs,
     # but they are very unreliable. So until we know what's going on, FL5.1 on 10.6
     # is going to have to live with DialogKit dialogs. 
     # |         |               |           |
-    ('mac',     'fontlab',      None,       "dialogs_fontlab_legacy2"),
+    ('mac', 'fontlab', None, "dialogs_fontlab_legacy1"),
     # because FontLab 5.1 on mac, 10.7+ should run cocoa / vanilla
     # |         |               |           |
-    ('mac',     None,           None,       "dialogs_mac_vanilla"),
+    (None, 'fontlabvi', None, "dialogs_fontlab_vi"),
+    # FontLab VI should use its dedicated module
+    # |         |               |           |
+    ('mac', None, None, "dialogs_mac_vanilla"),
     # perhaps nonelab scripts can run vanilla as well?
     # |         |               |           |
-    ('win',     None,           None,       "dialogs_legacy"),
+    ('win', None, None, "dialogs_legacy"),
     # older windows stuff might be able to use the legacy dialogs
 ]
 
@@ -134,7 +154,7 @@ dialogs = {}
 
 if __verbose__:
     print "robofab.interface.all __init__ - finding out where we were."
- 
+
 # do we have a support module?
 for pl, app, py, platformApplicationModuleName in platformApplicationSupport:
     if __verbose__:
@@ -148,7 +168,7 @@ for pl, app, py, platformApplicationModuleName in platformApplicationSupport:
 
 if __verbose__:
     print "searched for", pl, app, py, platformApplicationModuleName
-    
+
 # preload the namespace with default functions that do nothing but raise NotImplementedError
 from robofab.interface.all.dialogs_default import *
 
@@ -156,17 +176,20 @@ from robofab.interface.all.dialogs_default import *
 if platformApplicationModuleName == "dialogs_fontlab_legacy1":
     try:
         from robofab.interface.all.dialogs_fontlab_legacy1 import *
+
         foundPlatformModule = True
         if __verbose__:
             print "loaded robofab.interface.all.dialogs_fontlab_legacy1"
         if platform == "mac":
-            from robofab.interface.mac.getFileOrFolder import GetFile, GetFileOrFolder
+            from robofab.interface.mac.getFileOrFolder import (GetFile,
+                                                               GetFileOrFolder)
     except ImportError:
         print "can't import", platformApplicationModuleName
 
 elif platformApplicationModuleName == "dialogs_fontlab_legacy2":
     try:
         from robofab.interface.all.dialogs_fontlab_legacy2 import *
+
         foundPlatformModule = True
         if __verbose__:
             print "loaded robofab.interface.all.dialogs_fontlab_legacy2"
@@ -176,13 +199,21 @@ elif platformApplicationModuleName == "dialogs_fontlab_legacy2":
             #
             #
             #
-            from robofab.interface.all.dialogs_legacy import AskString, TwoChecks, TwoFields, SelectGlyph, FindGlyph, OneList, SearchList, SelectFont, SelectGlyph
+            from robofab.interface.all.dialogs_legacy import (AskString,
+                                                              FindGlyph,
+                                                              OneList,
+                                                              SearchList,
+                                                              SelectFont,
+                                                              SelectGlyph,
+                                                              TwoChecks,
+                                                              TwoFields)
     except ImportError:
         print "can't import", platformApplicationModuleName
 
 elif platformApplicationModuleName == "dialogs_mac_vanilla":
     try:
         from robofab.interface.all.dialogs_mac_vanilla import *
+
         foundPlatformModule = True
         if __verbose__:
             print "loaded robofab.interface.all.dialogs_mac_vanilla"
@@ -190,14 +221,24 @@ elif platformApplicationModuleName == "dialogs_mac_vanilla":
         print "can't import", platformApplicationModuleName
 
 elif platformApplicationModuleName == "dialogs_legacy":
-   try:
-       from robofab.interface.all.dialogs_legacy import *
-       foundPlatformModule = True
-       if __verbose__:
-           print "loaded robofab.interface.all.dialogs_legacy"
-   except ImportError:
-       print "can't import", platformApplicationModuleName
-    
+    try:
+        from robofab.interface.all.dialogs_legacy import *
+
+        foundPlatformModule = True
+        if __verbose__:
+            print "loaded robofab.interface.all.dialogs_legacy"
+    except ImportError:
+        print "can't import", platformApplicationModuleName
+
+elif platformApplicationModuleName == "dialogs_fontlab_vi":
+    try:
+        from robofab.interface.all.dialogs_fontlab_vi import *
+
+        foundPlatformModule = True
+        if __verbose__:
+            print "loaded robofab.interface.all.dialogs_fontlab_vi"
+    except ImportError:
+        print "can't import", platformApplicationModuleName
 
 __all__ = [
     "AskString",
@@ -217,7 +258,7 @@ __all__ = [
     "ProgressBar",
 ]
 
-    
+
 def test():
     """ This is a test that prints the available functions and where they're imported from.
         The report can be useful for debugging.
@@ -264,7 +305,7 @@ def test():
     print "\tplatformVersion:", platformVersion
     print "\tlooking for module:", platformApplicationModuleName
     print "\t\tdid we find it?", foundPlatformModule
-    
+
     print
     print "Available dialogs and source:"
     for name in __all__:
@@ -273,6 +314,6 @@ def test():
         else:
             print "\t", name, "\t not loaded."
 
+
 if __name__ == "__main__":
     test()
-

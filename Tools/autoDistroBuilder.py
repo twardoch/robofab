@@ -5,8 +5,10 @@ if len(sys.argv) == 2:
     # assume the path is the second argument
     testBuildFolder = sys.argv[1]
 else:
-    testBuildFolder = "/Users/erik/Develop/svn.robofab.com/randomOtherDifferentDirectory"
-    
+    testBuildFolder = (
+        "/Users/erik/Develop/svn.robofab.com/randomOtherDifferentDirectory"
+    )
+
 
 """
 
@@ -16,28 +18,30 @@ else:
     
 """
 
-from buildRoboFabDistroFromSVN import buildProducts, buildDownloadPage
+from buildRoboFabDistroFromSVN import buildDownloadPage, buildProducts
 
 robofabProducts = {
-    'RoboFab_%s_plusAllDependencies':[
+    "RoboFab_%s_plusAllDependencies": [
         ("http://svn.robofab.com/trunk", "RoboFab"),
         ("http://svn.typesupply.com/packages/vanilla/trunk", "Vanilla"),
         ("http://svn.typesupply.com/packages/dialogKit/trunk", "DialogKit"),
-        ("https://fonttools.svn.sourceforge.net/svnroot/fonttools/trunk/", "FontTools")
+        ("https://fonttools.svn.sourceforge.net/svnroot/fonttools/trunk/", "FontTools"),
     ],
-    'RoboFab_%s_plusFontTools':[
+    "RoboFab_%s_plusFontTools": [
         ("http://svn.robofab.com/trunk", "RoboFab"),
-        ("https://fonttools.svn.sourceforge.net/svnroot/fonttools/trunk/", "FontTools")
+        ("https://fonttools.svn.sourceforge.net/svnroot/fonttools/trunk/", "FontTools"),
     ],
-    'RoboFab_%s_only':[
+    "RoboFab_%s_only": [
         ("http://svn.robofab.com/trunk", "RoboFab"),
     ],
 }
 
-filenames, revision = buildProducts(robofabProducts, buildFolder=testBuildFolder, deleteBuilds=True, verbose=False)
+filenames, revision = buildProducts(
+    robofabProducts, buildFolder=testBuildFolder, deleteBuilds=True, verbose=False
+)
 
-#print "writing html"
+# print "writing html"
 buildDownloadPage(testBuildFolder, new=filenames, changeSet=revision)
 
-#print "filenames", filenames
-#print "done"
+# print "filenames", filenames
+# print "done"

@@ -3,8 +3,9 @@
 # for each factor create a new font file.
 
 import os
-from robofab.world import SelectFont, NewFont
+
 from robofab.interface.all.dialogs import AskString, GetFolder
+from robofab.world import NewFont, SelectFont
 
 font1 = SelectFont("Select font 1")
 font2 = SelectFont("Select font 2")

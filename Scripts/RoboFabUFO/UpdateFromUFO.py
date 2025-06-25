@@ -14,21 +14,19 @@
 """
 
 
-from robofab.interface.all.dialogs import AskYesNoCancel
-from robofab.interface.all.dialogs import Message
-
-from robofab.world import AllFonts, OpenFont, CurrentFont
-from robofab.objects.objectsRF import RFont as _RFont
-from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
-from robofab.glifLib import GlyphSet
-from robofab.objects.objectsFL import RGlyph
-from robofab.ufoLib import makeUFOPath, UFOWriter
-from robofab.interface.all.dialogs import ProgressBar
+import os
 
 from dialogKit import *
 from sets import Set
 
-import os
+from robofab.glifLib import GlyphSet
+from robofab.interface.all.dialogs import AskYesNoCancel, Message, ProgressBar
+from robofab.objects.objectsFL import RGlyph
+from robofab.objects.objectsRF import RFont as _RFont
+from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
+from robofab.ufoLib import UFOWriter, makeUFOPath
+from robofab.world import AllFonts, CurrentFont, OpenFont
+
 
 class UpdateFromUFODialogDialog(object):
 	

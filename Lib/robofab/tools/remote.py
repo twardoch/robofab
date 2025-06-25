@@ -11,6 +11,7 @@ if world.inFontLab and world.mac is not None:
 
 else:
 	import sys
+
 	from aetools import TalkTo
 
 	class FontLab(TalkTo):
@@ -19,10 +20,11 @@ else:
 __all__ = ['initFontLabRemote', 'runFontLabRemote']
 
 def _executePython(theAppleEvent, theReply):
+	import sys
+	import traceback
+
 	import aetools
 	import cStringIO
-	import traceback
-	import sys
 	parms, attrs = aetools.unpackevent(theAppleEvent)
 	source = parms.get("----")
 	if source is None:
@@ -67,8 +69,9 @@ def runFontLabRemote(code):
 
 
 def Glyph2String(glyph):
-	from robofab.pens.digestPen import DigestPointPen
 	import pickle
+
+	from robofab.pens.digestPen import DigestPointPen
 	p = DigestPointPen(glyph)
 	glyph.drawPoints(p)
 	info = {}

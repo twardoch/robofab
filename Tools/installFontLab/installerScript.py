@@ -13,6 +13,7 @@ print "I will log to", "%(appLogPath)s"
 print "I will save my results to", "%(resultsPath)s"
 print "I will test for these modules:", "%(moduleData)s"
 from FL import *
+
 log(p,"FontLab version "+fl.version)
 resultData.append("version:\t"+fl.version)
 

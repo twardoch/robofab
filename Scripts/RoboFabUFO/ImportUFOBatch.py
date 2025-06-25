@@ -7,10 +7,10 @@
 	Note this is a relatively dumb import script.
 	
 """
-from robofab.world import NewFont
+import os
 
 from robofab.interface.all.dialogs import GetFolder
-import os
+from robofab.world import NewFont
 
 
 def globUFO(dir, filter=None):

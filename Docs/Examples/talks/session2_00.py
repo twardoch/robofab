@@ -2,7 +2,7 @@
 # set basic attributes in a glyph
  
 from robofab.world import CurrentFont
- 
+
 font = CurrentFont()
 glyph = font['A']
 

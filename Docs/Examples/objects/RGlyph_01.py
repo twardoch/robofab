@@ -3,6 +3,7 @@
 # attribute examples
 
 from robofab.world import CurrentFont, CurrentGlyph
+
 f = CurrentFont()
 
 # create a glyph object by asking the font

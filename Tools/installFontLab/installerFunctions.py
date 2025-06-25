@@ -1,6 +1,10 @@
 """ These are the functions we want to use in FontLab."""
 
-import sys, os, time, platform
+import os
+import platform
+import sys
+import time
+
 
 def log(path, entry, verbose=True):
     """Write stuff into log files"""

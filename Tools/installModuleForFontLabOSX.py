@@ -49,15 +49,15 @@
 
 import os
 import platform
-from time import localtime, strftime, sleep
+from time import localtime, sleep, strftime
 
 longTimeStamp = strftime("%a, %d %b %Y %H:%M:%S", localtime())
 shortTimeStamp = strftime("%d_%b_%Y_%H_%M_%S", localtime())
 scriptVersion = "1.0"
 
 import tempfile
-from AppKit import *
 
+from AppKit import *
 
 installerCode = """# This is a automatically generated installer script for FontLab
 # Generated on %(timeStamp)s

@@ -1,11 +1,11 @@
-from robofab.world import RFont
-from fontTools.pens.basePen import BasePen
-from robofab.misc.arrayTools import updateBounds, pointInRect, unionRect
-from robofab.misc.bezierTools import calcCubicBounds, calcQuadraticBounds
-from robofab.pens.filterPen import _estimateCubicCurveLength, _getCubicPoint
 import math
 
+from fontTools.pens.basePen import BasePen
 
+from robofab.misc.arrayTools import pointInRect, unionRect, updateBounds
+from robofab.misc.bezierTools import calcCubicBounds, calcQuadraticBounds
+from robofab.pens.filterPen import _estimateCubicCurveLength, _getCubicPoint
+from robofab.world import RFont
 
 __all__ = ["AngledMarginPen", "getAngledMargins", 
 	"setAngledLeftMargin", "setAngledRightMargin",
@@ -42,7 +42,7 @@ class AngledMarginPen(BasePen):
 	
 	def _getAngled(self, pt):
 		r = (g.width + (pt[1] / math.tan(self._angle)))-pt[0]
-		l = pt[0]-((pt[1] / math.tan(self._angle)))
+		l = pt[0]-(pt[1] / math.tan(self._angle))
 		if self._right is None:
 			self._right = r
 		else:

@@ -1,6 +1,7 @@
 # robothon06
 # work with kerning 1 
 from robofab.world import CurrentFont
+
 font = CurrentFont()
 # now the kerning object is generated once
 kerning = font.kerning

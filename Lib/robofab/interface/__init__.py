@@ -8,7 +8,3 @@ interfaces/mac : modules that are mac specific
 interfaces/win : modules that are windows specific
 
 """
-
-
-
-

@@ -1,4 +1,5 @@
 from robofab.world import CurrentFont
+
 f = CurrentFont()
 # this is the high level RoboFab object
 print f

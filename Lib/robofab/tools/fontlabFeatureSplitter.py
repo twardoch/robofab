@@ -1,15 +1,16 @@
 import re
 
 featureRE = re.compile(
-    "^"            # start of line
-    "\s*"          #
-    "feature"      # feature
-    "\s+"          #
-    "(\w{4})"      # four alphanumeric characters
-    "\s*"          #
-    "\{"           # {
-    , re.MULTILINE # run in multiline to preserve line seps
+    "^"  # start of line
+    r"\s*"  #
+    "feature"  # feature
+    r"\s+"  #
+    r"(\w{4})"  # four alphanumeric characters
+    r"\s*"  #
+    r"\{",  # {
+    re.MULTILINE,  # run in multiline to preserve line seps
 )
+
 
 def splitFeaturesForFontLab(text):
     """
@@ -50,6 +51,7 @@ def splitFeaturesForFontLab(text):
             features.append((featureName, featureText))
     return classes, features
 
+
 testText = """
 @class1 = [a b c d];
 
@@ -73,13 +75,23 @@ feature ss02 {sub y by y.alt} ss02;
 expectedTestResult = (
     "\n@class1 = [a b c d];\n",
     [
-        ("liga", "\nfeature liga {\n    sub f i by fi;\n} liga;\n\n@class2 = [x y z];\n"),
-        ("salt", "\nfeature salt {\n    sub a by a.alt;\n} salt; feature ss01 {sub x by x.alt} ss01;\n"),
-        ("ss02", "\nfeature ss02 {sub y by y.alt} ss02;\n\n# feature calt {\n#     sub a b' by b.alt;\n# } calt;\n")
-    ]
+        (
+            "liga",
+            "\nfeature liga {\n    sub f i by fi;\n} liga;\n\n@class2 = [x y z];\n",
+        ),
+        (
+            "salt",
+            "\nfeature salt {\n    sub a by a.alt;\n} salt; feature ss01 {sub x by x.alt} ss01;\n",
+        ),
+        (
+            "ss02",
+            "\nfeature ss02 {sub y by y.alt} ss02;\n\n# feature calt {\n#     sub a b' by b.alt;\n# } calt;\n",
+        ),
+    ],
 )
 
 
 if __name__ == "__main__":
     import doctest
+
     doctest.testmod()

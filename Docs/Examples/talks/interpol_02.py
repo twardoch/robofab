@@ -1,11 +1,10 @@
 # robothon06
 
-from robofab.world import CurrentFont
-
 # We need to import a class with a different
 # implementation for the glyph object.
 # It looks a bit odd, but this is how it is done
 from robofab.objects.objectsRF import RGlyph as _RGlyph
+from robofab.world import CurrentFont
 
 f = CurrentFont()
 

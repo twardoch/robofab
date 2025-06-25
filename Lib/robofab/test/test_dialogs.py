@@ -1,9 +1,9 @@
 import robofab.interface.all.dialogs
-reload(robofab.interface.all.dialogs)
-from robofab.interface.all.dialogs import *
 
+reload(robofab.interface.all.dialogs)
 import unittest
 
+from robofab.interface.all.dialogs import *
 
 __all__ = [
     "AskString",            #x

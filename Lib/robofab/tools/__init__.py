@@ -6,7 +6,3 @@ The code is split up into sections.
 
 
 """
-
-
-
-

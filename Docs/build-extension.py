@@ -2,6 +2,7 @@
 
 import os
 import shutil
+
 from mojo.extensions import ExtensionBundle
 
 libPath = os.path.dirname(__file__)

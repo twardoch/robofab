@@ -4,6 +4,7 @@
 
 # start using the current font
 from robofab.world import CurrentGlyph
+
 g = CurrentGlyph()
 
 # suppose you've done the right imports

@@ -1,4 +1,3 @@
-
 """
 
 Dialogs.
@@ -12,8 +11,9 @@ PC implementation by Eigi Eigendorf and is (C)2002 Eigi Eigendorf.
 
 import os
 import sys
-from robofab import RoboFabError
 from warnings import warn
+
+from robofab import RoboFabError
 
 MAC = False
 PC = False
@@ -57,9 +57,9 @@ if MAC:
 		import macfs
 		haveMacfs = True
 elif PC and not inFontLab:
-	from win32com.shell import shell
-	import win32ui
 	import win32con
+	import win32ui
+	from win32com.shell import shell
 
 
 def _raisePlatformError(dialog):
@@ -643,6 +643,7 @@ def GetFolder(message=None):
 				path = fss.as_pathname()
 		else:
 			from robofab.interface.mac.getFileOrFolder import GetFileOrFolder
+
 			# This _also_ allows the user to select _files_, but given the
 			# package/folder dichotomy, I think we have no other choice.
 			path = GetFileOrFolder(message)

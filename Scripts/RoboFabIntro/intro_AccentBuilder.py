@@ -1,8 +1,8 @@
-#FLM: RoboFab Intro, Building Accented Glyphs
+# FLM: RoboFab Intro, Building Accented Glyphs
 
 #
 #
-#	demo building accented glyphs with robofab
+# demo building accented glyphs with robofab
 #
 #
 
@@ -11,11 +11,10 @@
 # several tools that handle these operations splendidly.
 # Why don't we have a look?
 
-# (you will need to have a font open in FontLab)
-from robofab.world import CurrentFont
-
 # accentBuilder lives in robofab.tools
 from robofab.tools.accentBuilder import AccentTools
+# (you will need to have a font open in FontLab)
+from robofab.world import CurrentFont
 
 font = CurrentFont()
 
@@ -23,10 +22,10 @@ font = CurrentFont()
 # that you want to compile. This is a very short one for
 # demonstration purposes. There are some more extensive
 # lists located in robofab.gString
-myList = ['aacute', 'agrave', 'acircumflex', 'adieresis', 'atilde', 'aring']
+myList = ["aacute", "agrave", "acircumflex", "adieresis", "atilde", "aring"]
 
 # AccentTools is the class that contains the most important methods.
-# It takes a font and the list of accented glyphs as arguments. 
+# It takes a font and the list of accented glyphs as arguments.
 accentTool = AccentTools(font, myList)
 
 # These accented glyphs are compiled using anchors. Anchors are
@@ -38,7 +37,9 @@ accentTool = AccentTools(font, myList)
 # to position the anchors appropriately. We have very flexible control
 # of how the anchors are positioned in relation to the glyph.
 # So, build the needed anchors!
-accentTool.buildAnchors(ucXOffset=30, ucYOffset=70, lcXOffset=20, lcYOffset=50, doProgress=True)
+accentTool.buildAnchors(
+    ucXOffset=30, ucYOffset=70, lcXOffset=20, lcYOffset=50, doProgress=True
+)
 
 # AccentTools may encounter some problems, for example if some
 # necessary glyphs are not present, when adding the anchors.
@@ -57,4 +58,3 @@ font.update()
 
 # See how easy that is? And, this is just the tip of the iceburg
 # with AccentTools. Read the source!
-

@@ -11,9 +11,9 @@ try:
 except ImportError:
 	print "The fl_cmd module is not available here. flPen.py"
 
-from robofab.tools.toolsFL import NewGlyph
-from robofab.pens.pointPen import AbstractPointPen
 from robofab.pens.adapterPens import SegmentToPointPen
+from robofab.pens.pointPen import AbstractPointPen
+from robofab.tools.toolsFL import NewGlyph
 
 
 def roundInt(x):

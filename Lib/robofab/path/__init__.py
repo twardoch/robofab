@@ -6,7 +6,3 @@ Maybe it should move somewhere else.
 
 
 """
-
-
-
-

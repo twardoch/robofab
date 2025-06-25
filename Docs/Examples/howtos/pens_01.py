@@ -2,8 +2,8 @@
 # Usepens howto
 # attribute examples
 
-from robofab.world import OpenFont
 from robofab.pens.digestPen import DigestPointPen
+from robofab.world import OpenFont
 
 f = OpenFont()
 

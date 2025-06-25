@@ -1,8 +1,8 @@
 from fontTools.pens.basePen import AbstractPen, BasePen
-from robofab.misc.bezierTools import splitLine, splitCubic
-
-
 from sets import Set
+
+from robofab.misc.bezierTools import splitCubic, splitLine
+
 
 class MarginPen(BasePen):
 
@@ -142,7 +142,7 @@ class MarginPen(BasePen):
 		
 if __name__ == "__main__":
 
-	from robofab.world import CurrentGlyph, CurrentFont
+	from robofab.world import CurrentFont, CurrentGlyph
 	f = CurrentFont()
 	g = CurrentGlyph()
 

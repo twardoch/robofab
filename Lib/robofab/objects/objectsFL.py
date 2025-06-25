@@ -1,25 +1,31 @@
 """UFO implementation for the objects as used by FontLab 4.5 and higher"""
 
-from FL import *	
-
-from robofab.tools.toolsFL import GlyphIndexTable, NewGlyph
-from robofab.objects.objectsBase import BaseFont, BaseGlyph, BaseContour, BaseSegment,\
-		BasePoint, BaseBPoint, BaseAnchor, BaseGuide, BaseComponent, BaseKerning, BaseInfo, BaseFeatures, BaseGroups, BaseLib,\
-		roundPt, addPt, _box,\
-		MOVE, LINE, CORNER, CURVE, QCURVE, OFFCURVE,\
-		relativeBCPIn, relativeBCPOut, absoluteBCPIn, absoluteBCPOut,\
-		BasePostScriptFontHintValues, postScriptHintDataLibKey, BasePostScriptGlyphHintValues
-from robofab.misc import arrayTools
-from robofab.pens.flPen import FLPointPen, FLPointContourPen
-from robofab import RoboFabError
-import os
-from robofab.plistlib import Data, Dict, readPlist, writePlist
-from StringIO import StringIO
-from robofab import ufoLib
-from warnings import warn
 import datetime
-from robofab.tools.fontlabFeatureSplitter import splitFeaturesForFontLab
+import os
+from warnings import warn
 
+from FL import *
+from StringIO import StringIO
+
+from robofab import RoboFabError, ufoLib
+from robofab.misc import arrayTools
+from robofab.objects.objectsBase import (CORNER, CURVE, LINE, MOVE, OFFCURVE,
+                                         QCURVE, BaseAnchor, BaseBPoint,
+                                         BaseComponent, BaseContour,
+                                         BaseFeatures, BaseFont, BaseGlyph,
+                                         BaseGroups, BaseGuide, BaseInfo,
+                                         BaseKerning, BaseLib, BasePoint,
+                                         BasePostScriptFontHintValues,
+                                         BasePostScriptGlyphHintValues,
+                                         BaseSegment, _box, absoluteBCPIn,
+                                         absoluteBCPOut, addPt,
+                                         postScriptHintDataLibKey,
+                                         relativeBCPIn, relativeBCPOut,
+                                         roundPt)
+from robofab.pens.flPen import FLPointContourPen, FLPointPen
+from robofab.plistlib import Data, Dict, readPlist, writePlist
+from robofab.tools.fontlabFeatureSplitter import splitFeaturesForFontLab
+from robofab.tools.toolsFL import GlyphIndexTable, NewGlyph
 
 try:
 	set
@@ -127,7 +133,8 @@ class PostScriptFontHintValues(BasePostScriptFontHintValues):
 		self._masterIndex = impliedMasterIndex
 	
 	def copy(self):
-		from robofab.objects.objectsRF import PostScriptFontHintValues as _PostScriptFontHintValues
+		from robofab.objects.objectsRF import \
+		    PostScriptFontHintValues as _PostScriptFontHintValues
 		return _PostScriptFontHintValues(data=self.asDict())
 
 
@@ -139,7 +146,8 @@ class PostScriptGlyphHintValues(BasePostScriptGlyphHintValues):
 		self._object = glyph.naked()
 
 	def copy(self):
-		from robofab.objects.objectsRF import PostScriptGlyphHintValues as _PostScriptGlyphHintValues
+		from robofab.objects.objectsRF import \
+		    PostScriptGlyphHintValues as _PostScriptGlyphHintValues
 		return _PostScriptGlyphHintValues(data=self.asDict())
 
 	def _hintObjectsToList(self, item):
@@ -371,7 +379,7 @@ def OpenFont(path=None, note=None):
 	
 def NewFont(familyName=None, styleName=None):
 	"""Make a new font"""
-	from FL import fl, Font
+	from FL import Font, fl
 	f = Font()
 	fl.Add(f)
 	rf = RFont(f)
@@ -411,8 +419,9 @@ def setMaskToGlyph(maskGlyph, targetGlyph, clear=True):
 	targetGlyph is a FontLab RGLyph.
 	clear is a bool. False: keep the existing mask data, True: clear the existing mask data.
 	"""
-	from robofab.objects.objectsFL import RGlyph as FL_RGlyph
 	from FL import Glyph as FL_NakedGlyph
+
+	from robofab.objects.objectsFL import RGlyph as FL_RGlyph
 	flGlyph = FL_NakedGlyph()		# new, orphaned FL glyph
 	wrapped = FL_RGlyph(flGlyph)	# rf wrapper for FL glyph
 	if not clear:
@@ -462,7 +471,8 @@ class RFont(BaseFont):
 	def __init__(self, font=None):
 		BaseFont.__init__(self)
 		if font is None:
-			from FL import fl, Font
+			from FL import Font, fl
+
 			# rather than raise an error we could just start a new font.
 			font = Font()
 			fl.Add(font)
@@ -949,7 +959,8 @@ class RFont(BaseFont):
 
 	def writeUFO(self, path=None, doProgress=False, glyphNameToFileNameFunc=None,
 		doHints=False, doInfo=True, doKerning=True, doGroups=True, doLib=True, doFeatures=True, glyphs=None, formatVersion=2):
-		from robofab.interface.all.dialogs import ProgressBar, Message
+		from robofab.interface.all.dialogs import Message, ProgressBar
+
 		# special glyph name to file name conversion
 		if glyphNameToFileNameFunc is None:
 			glyphNameToFileNameFunc = self.getGlyphNameToFileNameFunc()
@@ -1084,8 +1095,9 @@ class RFont(BaseFont):
 	def readUFO(self, path, doProgress=False,
 		doHints=False, doInfo=True, doKerning=True, doGroups=True, doLib=True, doFeatures=True, glyphs=None):
 		"""read a .ufo into the font"""
-		from robofab.pens.flPen import FLPointPen
 		from robofab.interface.all.dialogs import ProgressBar
+		from robofab.pens.flPen import FLPointPen
+
 		# start up the reader
 		reader = ufoLib.UFOReader(path)
 		glyphSet = reader.getGlyphSet()
@@ -2525,6 +2537,7 @@ class RKerning(BaseKerning):
 		"""Math operations on FL Kerning objects return RF Kerning objects
 		as they need to be orphaned objects and FL can't deal with that."""
 		from sets import Set
+
 		from robofab.objects.objectsRF import RKerning as _RKerning
 		new = _RKerning()
 		k = Set(self.keys()) | Set(other.keys())
@@ -2536,6 +2549,7 @@ class RKerning(BaseKerning):
 		"""Math operations on FL Kerning objects return RF Kerning objects
 		as they need to be orphaned objects and FL can't deal with that."""
 		from sets import Set
+
 		from robofab.objects.objectsRF import RKerning as _RKerning
 		new = _RKerning()
 		k = Set(self.keys()) | Set(other.keys())

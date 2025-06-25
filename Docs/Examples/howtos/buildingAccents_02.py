@@ -8,13 +8,13 @@
 # on the accents too!
 # (c) evb
  
-from robofab.world import CurrentFont
 from robofab.tools.toolsAll import readGlyphConstructions
- 
+from robofab.world import CurrentFont
+
 f = CurrentFont()
  
 import string
- 
+
 theList = [
     # caps
     'AEacute',

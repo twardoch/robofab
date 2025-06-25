@@ -1,8 +1,9 @@
 """A collection of non-environment specific tools"""
 
 
-import sys
 import os
+import sys
+
 from robofab.objects.objectsRF import RInfo
 
 if sys.platform == "darwin" and sys.version_info[:3] == (2, 2, 0):
@@ -108,8 +109,8 @@ def extractT1FontInfo(font):
 	return info
 
 def fontToUFO(src, dst, fileType=None):
-	from robofab.ufoLib import UFOWriter
 	from robofab.pens.adapterPens import SegmentToPointPen
+	from robofab.ufoLib import UFOWriter
 	if fileType is None:
 		fileType = guessFileType(src)
 		if fileType is None:

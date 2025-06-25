@@ -13,11 +13,12 @@
 """
 
 
-from robofab.glifLib import GlyphSet
-from robofab.world import CurrentFont, CurrentGlyph, AllFonts
-from robofab.interface.all.dialogs import Message, GetFileOrFolder
-from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
 import os
+
+from robofab.glifLib import GlyphSet
+from robofab.interface.all.dialogs import GetFileOrFolder, Message
+from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
+from robofab.world import AllFonts, CurrentFont, CurrentGlyph
 
 f = CurrentFont()
 g = CurrentGlyph()

@@ -9,11 +9,12 @@ DumpOneGlyphToUFO.py
 """
 
 
+import os
+
 from robofab.glifLib import writeGlyphToString
-from robofab.world import CurrentFont, CurrentGlyph
 from robofab.interface.all.dialogs import PutFile
 from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
-import os
+from robofab.world import CurrentFont, CurrentGlyph
 
 f = CurrentFont()
 g = CurrentGlyph()

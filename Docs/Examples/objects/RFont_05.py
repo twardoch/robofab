@@ -3,6 +3,7 @@
 # method examples, available in FontLab
 
 from robofab.world import CurrentFont
+
 f = CurrentFont()
 
 # the keys() method returns a list of glyphnames:

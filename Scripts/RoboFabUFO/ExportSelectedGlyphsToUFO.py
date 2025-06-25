@@ -9,11 +9,11 @@
 """
 
 
-from robofab.glifLib import GlyphSet
-from robofab.world import CurrentFont, CurrentGlyph
-from robofab.interface.all.dialogs import Message
 import os
 
+from robofab.glifLib import GlyphSet
+from robofab.interface.all.dialogs import Message
+from robofab.world import CurrentFont, CurrentGlyph
 
 f = CurrentFont()
 g = CurrentGlyph()

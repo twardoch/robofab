@@ -25,6 +25,7 @@ for l in names:
 	print 'finished all pairs starting with', left.name
 
 from robofab.interface.all.dialogs import PutFile
+
 path = PutFile("Save the tagged file:", "KerningProofTags.txt")
 if path:
 	id.save(path)

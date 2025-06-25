@@ -10,8 +10,10 @@
 # Generating fonts with RoboFab is super easy! Let's have a look.
 # (you will need to have a font open in FontLab)
 
-from robofab.world import CurrentFont
 import os
+
+from robofab.world import CurrentFont
+
 
 # A little function for making folders. we'll need it later.
 def makeFolder(path):

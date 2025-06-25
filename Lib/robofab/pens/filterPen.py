@@ -1,12 +1,12 @@
 """A couple of point pens to filter contours in various ways."""
 
+import math
+
 from fontTools.pens.basePen import AbstractPen, BasePen
 
-from robofab.pens.pointPen import AbstractPointPen
-from robofab.objects.objectsRF import RGlyph as _RGlyph
 from robofab.objects.objectsBase import _interpolatePt
-
-import math
+from robofab.objects.objectsRF import RGlyph as _RGlyph
+from robofab.pens.pointPen import AbstractPointPen
 
 #
 #	 threshold filtering
@@ -282,7 +282,7 @@ def spikeGlyph(aGlyph, segmentLength=20, spikeLength=40, patternFunc=None):
 	"""Add narly spikes or dents to the glyph.
 	patternFunc is an optional function which recalculates the offset."""
 
-	from math import atan2, sin, cos, pi
+	from math import atan2, cos, pi, sin
 	
 	new = _RGlyph()
 	new.appendGlyph(aGlyph)

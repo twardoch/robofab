@@ -1,5 +1,7 @@
-import os, sys
-from robofab import RoboFabError, version, numberVersion
+import os
+import sys
+
+from robofab import RoboFabError, numberVersion, version
 
 
 class RFWorld:
@@ -30,7 +32,8 @@ class RFWorld:
 
 		# collect versions
 		self.pyVersion = sys.version[:3]
-		self.inPython = False 
+		self.inPython = False
+		self.inFontGate = False
 		self.inFontLab = False
 		self.flVersion = None
 		self.inGlyphs = False
@@ -56,7 +59,12 @@ class RFWorld:
 				self.inRoboFont = True
 				self.roboFontVersion = bundle.infoDictionary()["CFBundleVersion"]
 			except ImportError:
-				# are we in FontLab?
+				# are we in FontGate or FontLab VI?
+				try:
+					import fontgate
+					self.inFontGate = True
+				except ImportError: pass
+				# are we in FontLab Studio 5 or older, or in FontLab VI?
 				try:
 					from FL import fl
 					self.applicationName = fl.filename
@@ -76,6 +84,7 @@ class RFWorld:
 			"Python version: %s" % self.pyVersion,
 			"Mac stuff: %s" % self.mac,
 			"PC stuff: %s" % self.pc,
+			"FontGate stuff: %s" % self.inFontGate,
 			"FontLab stuff: %s" % self.inFontLab,
 			"FLversion: %s" % self.flVersion,
 			"Glyphs stuff: %s" % self.inGlyphs,
@@ -90,16 +99,24 @@ world = RFWorld()
 
 lineBreak = os.linesep
 
-if world.inFontLab:
+if world.inFontGate:
 	from robofab.interface.all.dialogs import SelectFont, SelectGlyph
-	from robofab.objects.objectsFL import CurrentFont, CurrentGlyph, RFont, RGlyph, OpenFont, NewFont, AllFonts
+	from robofab.objects.objectsFG import (AllFonts, CurrentFont, CurrentGlyph,
+	                                       NewFont, OpenFont, RFont, RGlyph)
+elif world.inFontLab:
+	from robofab.interface.all.dialogs import SelectFont, SelectGlyph
+	from robofab.objects.objectsFL import (AllFonts, CurrentFont, CurrentGlyph,
+	                                       NewFont, OpenFont, RFont, RGlyph)
 	lineBreak = "\n"
 elif world.inRoboFont:
-	from mojo.roboFont import CurrentFont, CurrentGlyph, RFont, RGlyph, OpenFont, NewFont, AllFonts
+	from mojo.roboFont import (AllFonts, CurrentFont, CurrentGlyph, NewFont,
+	                           OpenFont, RFont, RGlyph)
 elif world.inGlyphs:
-	from objectsGS import CurrentFont, CurrentGlyph, RFont, RGlyph, OpenFont, NewFont, AllFonts
+	from objectsGS import (AllFonts, CurrentFont, CurrentGlyph, NewFont, OpenFont,
+	                       RFont, RGlyph)
 elif world.inPython:
-	from robofab.objects.objectsRF import CurrentFont, CurrentGlyph, RFont, RGlyph, OpenFont, NewFont, AllFonts
+	from robofab.objects.objectsRF import (AllFonts, CurrentFont, CurrentGlyph,
+	                                       NewFont, OpenFont, RFont, RGlyph)
 
     
 

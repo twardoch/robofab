@@ -7,18 +7,16 @@
 #
 
 import robofab
-
+# This is a brief intro into Robofabs all singing and
+# dancing dialog class. It will produce simple
+# dialogs in almost any environment, FontLab, Python IDE, W.
+from robofab.interface.all.dialogs import Message
 # Let's talk to some of the font objects.
 # CurrentFont and CurrentGlyph are similar to
 # the RoboFog functions. They return a font
 # or Glyph object respectively. It will be the
 # front most font or the front most glyph.
 from robofab.world import CurrentFont, CurrentGlyph
-
-# This is a brief intro into Robofabs all singing and
-# dancing dialog class. It will produce simple
-# dialogs in almost any environment, FontLab, Python IDE, W.
-from robofab.interface.all.dialogs import Message
 
 # (make sure you have a font opened in FontLab)
 

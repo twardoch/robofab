@@ -59,8 +59,10 @@ __all__ = [
 # Note: the Plist and Dict classes have been deprecated.
 
 import binascii
-from cStringIO import StringIO
 import re
+
+from cStringIO import StringIO
+
 try:
     from datetime import datetime
 except ImportError:
@@ -120,9 +122,9 @@ def writePlistToString(rootObject):
 def readPlistFromResource(path, restype='plst', resid=0):
     """Read plst resource from the resource fork of path.
     """
-    from Carbon.File import FSRef, FSGetResourceForkName
-    from Carbon.Files import fsRdPerm
     from Carbon import Res
+    from Carbon.File import FSGetResourceForkName, FSRef
+    from Carbon.Files import fsRdPerm
     fsRef = FSRef(path)
     resNum = Res.FSOpenResourceFile(fsRef, FSGetResourceForkName(), fsRdPerm)
     Res.UseResFile(resNum)
@@ -134,9 +136,9 @@ def readPlistFromResource(path, restype='plst', resid=0):
 def writePlistToResource(rootObject, path, restype='plst', resid=0):
     """Write 'rootObject' as a plst resource to the resource fork of path.
     """
-    from Carbon.File import FSRef, FSGetResourceForkName
-    from Carbon.Files import fsRdWrPerm
     from Carbon import Res
+    from Carbon.File import FSGetResourceForkName, FSRef
+    from Carbon.Files import fsRdWrPerm
     plistData = writePlistToString(rootObject)
     fsRef = FSRef(path)
     resNum = Res.FSOpenResourceFile(fsRef, FSGetResourceForkName(), fsRdWrPerm)
@@ -479,6 +481,7 @@ class PlistParser:
 
 # cruft to support booleans in Python <= 2.3
 import sys
+
 if sys.version_info[:2] < (2, 3):
     # Python 2.2 and earlier: no booleans
     # Python 2.2.x: booleans are ints

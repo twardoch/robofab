@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """glifLib.py -- Generic module for reading and writing the .glif format.
 
 More info about the .glif format (GLyphInterchangeFormat) can be found here:
@@ -15,9 +14,11 @@ __all__ = ["GlyphSet", "GlifLibError",
 		"glyphNameToFileName"]
 
 import os
-from robofab.xmlTreeBuilder import buildTree, stripCharacterData
-from robofab.pens.pointPen import AbstractPointPen
+
 from cStringIO import StringIO
+
+from robofab.pens.pointPen import AbstractPointPen
+from robofab.xmlTreeBuilder import buildTree, stripCharacterData
 
 
 class GlifLibError(Exception): pass
@@ -690,6 +691,7 @@ class GLIFPointPen(AbstractPointPen):
 
 if __name__ == "__main__":
 	from pprint import pprint
+
 	from robofab.pens.pointPen import PrintingPointPen
 	class TestGlyph: pass
 	gs = GlyphSet(".")

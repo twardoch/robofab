@@ -2,6 +2,7 @@
 # in the current font to <glyphname>.sc
  
 from robofab.world import CurrentFont
+
 f = CurrentFont()
  
 for g in f:

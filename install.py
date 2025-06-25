@@ -7,8 +7,9 @@ install script again.
 """
 
 
+import os
+import sys
 from distutils.sysconfig import get_python_lib
-import os, sys
 
 
 def install(srcDir, pathFileName):

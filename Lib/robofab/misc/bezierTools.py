@@ -259,7 +259,7 @@ def _splitCubicAtT(a, b, c, d, *ts):
 # Equation solvers.
 #
 
-from math import sqrt, acos, cos, pi
+from math import acos, cos, pi, sqrt
 
 
 def solveQuadratic(a, b, c,

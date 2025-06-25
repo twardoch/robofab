@@ -27,8 +27,9 @@ font = unwrapFont(font)
 """
 
 
-from FL import *
 from warnings import warn
+
+from FL import *
 
 try:
 	from fl_cmd import *

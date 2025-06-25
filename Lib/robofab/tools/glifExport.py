@@ -1,11 +1,13 @@
 """Tool for exporting GLIFs from FontLab"""
 
-import FL
 import os
-from robofab.interface.all.dialogs import ProgressBar
+
+import FL
+
 from robofab.glifLib import GlyphSet
-from robofab.tools.glifImport import GlyphPlaceholder
+from robofab.interface.all.dialogs import ProgressBar
 from robofab.pens.flPen import drawFLGlyphOntoPointPen
+from robofab.tools.glifImport import GlyphPlaceholder
 
 
 def exportGlyph(glyphName, flGlyph, glyphSet):
@@ -19,7 +21,8 @@ def exportGlyph(glyphName, flGlyph, glyphSet):
 	customdata = flGlyph.customdata
 	if customdata:
 		from cStringIO import StringIO
-		from robofab.plistlib import readPlist, Data
+
+		from robofab.plistlib import Data, readPlist
 		f = StringIO(customdata)
 		try:
 			glyph.lib = readPlist(f)

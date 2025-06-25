@@ -21,11 +21,13 @@ at.printAccentErrors()
 """
 #XXX! This is *very* experimental! I think it works, but you never know.
 
-from robofab.gString import lowercase_plain, accents, uppercase_plain, splitAccent, findAccentBase
-from robofab.tools.toolsAll import readGlyphConstructions
 import robofab
+from robofab.gString import (accents, findAccentBase, lowercase_plain,
+                             splitAccent, uppercase_plain)
 from robofab.interface.all.dialogs import ProgressBar
+from robofab.tools.toolsAll import readGlyphConstructions
 from robofab.world import RFWorld
+
 inFontLab = RFWorld().inFontLab
 
 anchorColor=125

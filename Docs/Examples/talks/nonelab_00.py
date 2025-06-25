@@ -6,9 +6,9 @@
 # FontLab will execute the python code:
 # it will find the current glyph and send it to our other script.
  
-from robofab.tools.remote import runFontLabRemote, receiveGlyph
+from robofab.tools.remote import receiveGlyph, runFontLabRemote
 from robofab.world import RFont
- 
+
 # this is what we want FontLab to do:
 pythonCode = """
 from robofab.world import CurrentGlyph

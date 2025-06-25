@@ -3,6 +3,7 @@ FontLab doesn't have an object browser and sometimes we do need to look inside""
 
 from pprint import pprint
 
+
 def classname(object, modname):
     """Get a class name and qualify it with a module name if necessary."""
     name = object.__name__

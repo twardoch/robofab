@@ -1,8 +1,10 @@
 # a more robust batch generator that only has one font open at the time.
 
-from robofab.interface.all.dialogs import GetFolder
-from robofab.world import RFont, OpenFont
 import os
+
+from robofab.interface.all.dialogs import GetFolder
+from robofab.world import OpenFont, RFont
+
 
 def collectSources(root):
 	files = []

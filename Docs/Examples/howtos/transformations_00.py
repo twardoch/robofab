@@ -3,8 +3,9 @@
 # usage examples
 
 from fontTools.misc.transform import Identity
+
 from robofab.world import CurrentFont
- 
+
 m = Identity
 print m
  

@@ -12,13 +12,15 @@
 
 try:
     print "\n", "-"*40
-    from FL import*
+    from FL import *
     print "fontlab version", fl.version
 except ImportError:
     print "probably not in FontLab."
 
 print "\n", "-"*40
-import sys, os
+import os
+import sys
+
 print "python version", sys.version
 
 def findSitePackages():

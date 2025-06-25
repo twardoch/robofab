@@ -1,6 +1,7 @@
-from robofab.pens.filterPen import flattenGlyph
-from robofab.objects.objectsRF import RGlyph as _RGlyph
 import math
+
+from robofab.objects.objectsRF import RGlyph as _RGlyph
+from robofab.pens.filterPen import flattenGlyph
 
 _EPSILON = 1e-15
 

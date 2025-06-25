@@ -5,9 +5,11 @@
 # Demonstrates: recursive function,, dialog, os module
  
 import os.path
+
 from robofab.interface.all.dialogs import GetFolder
 from robofab.world import OpenFont
- 
+
+
 # this function looks for fontlab files in a folder 
 def walk(someFolder, extension):
     extension = extension.lower()

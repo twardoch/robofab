@@ -9,7 +9,10 @@
 
 """
 
-import os, glob, time
+import glob
+import os
+import time
+
 
 def getRevision(url):
     """ Ask svn for the revision."""

@@ -1,4 +1,3 @@
-
 _glyphConstruction = """\
 #
 # RoboFab Glyph Construction Database

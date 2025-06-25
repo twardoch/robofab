@@ -1,10 +1,10 @@
 # use a point pen
 
-from robofab.world import CurrentFont
 from robofab.pens.pointPen import PrintingPointPen
+from robofab.world import CurrentFont
 
 font = CurrentFont()
-glyph = font['A']
+glyph = font["A"]
 
 pen = PrintingPointPen()
 glyph.drawPoints(pen)

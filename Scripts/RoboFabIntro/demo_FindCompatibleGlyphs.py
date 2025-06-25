@@ -6,8 +6,8 @@
 #
 
 
-from robofab.world import CurrentFont
 from robofab.pens.digestPen import DigestPointPen, DigestPointStructurePen
+from robofab.world import CurrentFont
 
 compatibles = {}
 

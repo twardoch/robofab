@@ -1,12 +1,11 @@
 import os
-import tempfile
 import shutil
+import tempfile
 import unittest
 
+from robofab.glifLib import READ_MODE, GlyphSet, glyphNameToFileName
 from robofab.test.testSupport import getDemoFontGlyphSetPath
-from robofab.glifLib import GlyphSet, glyphNameToFileName, READ_MODE
 from robofab.tools.glyphNameSchemes import glyphNameToShortFileName
-
 
 GLYPHSETDIR = getDemoFontGlyphSetPath()
 
@@ -143,8 +142,9 @@ class FileNameTests(unittest.TestCase):
 		
 
 if __name__ == "__main__":
-	from robofab.test.testSupport import runTests
 	import sys
+
+	from robofab.test.testSupport import runTests
 	if len(sys.argv) > 1 and os.path.isdir(sys.argv[-1]):
 		GLYPHSETDIR = sys.argv.pop()
 	runTests()

@@ -1,0 +1,23 @@
+Metadata-Version: 1.1
+Name: robofab
+Version: 1.2
+Summary: Tools to manipulate font sources
+Home-page: http://robofab.com/
+Author: Just van Rossum, Tal Leming, Erik van Blokland
+Author-email: info@robofab.com
+License: OpenSource, BSD-style
+Description-Content-Type: UNKNOWN
+Description: RoboFab is a Python library with objects that deal with data usually associated with fonts and type design. RoboFab reads and writes UFO font files and works in any Python 2.3 (and 2.2.1), 2.4. 2.5, 2.6, 2.7. The RoboFab code for FontLab works in in FontLab 4.6, FontLab Studio 5.04, 5.1 and hopefully up.
+        
+Platform: Any
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Environment :: Other Environment
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Multimedia :: Graphics
+Classifier: Topic :: Multimedia :: Graphics :: Graphics Conversion

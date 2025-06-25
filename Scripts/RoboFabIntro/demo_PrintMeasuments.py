@@ -2,8 +2,9 @@
 
 """print the distance and angle between two selected points"""
 
-from robofab.world import CurrentGlyph
 import math
+
+from robofab.world import CurrentGlyph
 
 glyph = CurrentGlyph()
 

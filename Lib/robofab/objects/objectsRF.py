@@ -1,15 +1,22 @@
 """UFO for GlifLib"""
 
-from robofab import RoboFabError, RoboFabWarning
-from robofab.objects.objectsBase import BaseFont, BaseKerning, BaseGroups, BaseInfo, BaseFeatures, BaseLib,\
-		BaseGlyph, BaseContour, BaseSegment, BasePoint, BaseBPoint, BaseAnchor, BaseGuide, BaseComponent, \
-		relativeBCPIn, relativeBCPOut, absoluteBCPIn, absoluteBCPOut, _box,\
-		_interpolate, _interpolatePt, roundPt, addPt,\
-		MOVE, LINE, CORNER, CURVE, QCURVE, OFFCURVE,\
-		BasePostScriptFontHintValues, postScriptHintDataLibKey, BasePostScriptGlyphHintValues
-
 import os
 
+from robofab import RoboFabError, RoboFabWarning
+from robofab.objects.objectsBase import (CORNER, CURVE, LINE, MOVE, OFFCURVE,
+                                         QCURVE, BaseAnchor, BaseBPoint,
+                                         BaseComponent, BaseContour,
+                                         BaseFeatures, BaseFont, BaseGlyph,
+                                         BaseGroups, BaseGuide, BaseInfo,
+                                         BaseKerning, BaseLib, BasePoint,
+                                         BasePostScriptFontHintValues,
+                                         BasePostScriptGlyphHintValues,
+                                         BaseSegment, _box, _interpolate,
+                                         _interpolatePt, absoluteBCPIn,
+                                         absoluteBCPOut, addPt,
+                                         postScriptHintDataLibKey,
+                                         relativeBCPIn, relativeBCPOut,
+                                         roundPt)
 
 __all__ = [	"CurrentFont", 
 		"CurrentGlyph", 'OpenFont',
@@ -296,13 +303,13 @@ class RFont(BaseFont):
 		#		['A', 'acute']
 		#		]
 		# }
-		import time
 		import os
 		import re
+		import time
 		componentSearch_RE = re.compile(
-			"<component\s+"		# <component
+			r"<component\s+"		# <component
 			"[^>]*?"			# anything EXCEPT >
-			"base\s*=\s*[\"\']"		# base="
+			"base\\s*=\\s*[\"\']"		# base="
 			"(.*?)"			# foo
 			"[\"\']"			# "
 			)
@@ -375,8 +382,9 @@ class RFont(BaseFont):
 		# copying those .glif files that have not been edited or (not sure how
 		# well that would work) by simply clearing out self._objects after the
 		# save.
-		from robofab.ufoLib import UFOWriter
 		from robofab.tools.fontlabFeatureSplitter import splitFeaturesForFontLab
+		from robofab.ufoLib import UFOWriter
+
 		# if no destination is given, or if
 		# the given destination is the current
 		# path, this is not a save as operation

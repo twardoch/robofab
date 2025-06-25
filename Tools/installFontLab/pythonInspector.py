@@ -9,10 +9,11 @@
 """
 
 
-import tempfile
+import os
 import shutil
-import os, time
-from time import strftime, localtime
+import tempfile
+import time
+from time import localtime, strftime
 
 scriptVersion = "1.1"
 # 
@@ -61,7 +62,8 @@ class FontLabInstaller(object):
         from AppKit import NSURL
         self.log("findFontLabCandidatesOSX start")
         try:
-            from LaunchServices import LSCopyApplicationURLsForURL, kLSRolesEditor
+            from LaunchServices import (LSCopyApplicationURLsForURL,
+                                        kLSRolesEditor)
             canLaunch = True
             self.log("LaunchServices available.")
         except ImportError:

@@ -4,7 +4,7 @@
 between 1% and 99% of a selected glyph into a new font.
 It requires two open source fonts in FontLab."""
 
-from robofab.interface.all.dialogs import SelectFont, OneList, ProgressBar
+from robofab.interface.all.dialogs import OneList, ProgressBar, SelectFont
 from robofab.world import NewFont
 
 src1 = SelectFont('Select source font one:')

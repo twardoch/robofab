@@ -10,10 +10,9 @@ GetFileOrFolder() allows the user to select a file _or_ a folder.
 __all__ = ["GetFile", "GetFileOrFolder"]
 
 
-from EasyDialogs import _process_Nav_args, _interact
-import Nav
 import Carbon.File
-
+import Nav
+from EasyDialogs import _interact, _process_Nav_args
 
 # Lots of copy/paste from EasyDialogs.py, for one because althought the
 # EasyDialogs counterparts take a million options, they don't take the

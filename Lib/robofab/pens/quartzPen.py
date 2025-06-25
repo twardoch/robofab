@@ -1,5 +1,6 @@
 from fontTools.pens.basePen import BasePen
 
+
 class QuartzPen(BasePen):
 
 	"""Pen to draw onto a Quartz drawing context (Carbon.CG)."""

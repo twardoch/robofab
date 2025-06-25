@@ -1,5 +1,3 @@
-
-
 __DEBUG__ = True
 __version__ = "0.2"
 
@@ -270,17 +268,20 @@ ToDo:
 """
 
 import os
-from robofab.objects.objectsBase import BaseFont, BaseGlyph, BaseContour, BaseSegment,\
-        BasePoint, BaseBPoint, BaseAnchor, BaseGuide, BaseComponent, BaseKerning, BaseInfo, BaseGroups, BaseLib,\
-        roundPt, addPt, _box,\
-        MOVE, LINE, CORNER, CURVE, QCURVE, OFFCURVE,\
-        relativeBCPIn, relativeBCPOut, absoluteBCPIn, absoluteBCPOut
-        
-from robofab.objects.objectsRF import RGlyph as _RGlyph
-        
-import fontforge
+
 import psMat
 
+import fontforge
+from robofab.objects.objectsBase import (CORNER, CURVE, LINE, MOVE, OFFCURVE,
+                                         QCURVE, BaseAnchor, BaseBPoint,
+                                         BaseComponent, BaseContour, BaseFont,
+                                         BaseGlyph, BaseGroups, BaseGuide,
+                                         BaseInfo, BaseKerning, BaseLib,
+                                         BasePoint, BaseSegment, _box,
+                                         absoluteBCPIn, absoluteBCPOut, addPt,
+                                         relativeBCPIn, relativeBCPOut,
+                                         roundPt)
+from robofab.objects.objectsRF import RGlyph as _RGlyph
 
 # a list of attributes that are to be copied when copying a glyph.
 # this is used by glyph.copy and font.insertGlyph
@@ -646,7 +647,8 @@ class RGlyph(BaseGlyph):
         
         Note: FontForge implements glyph.draw, but not glyph.drawPoints.
         """
-        from robofab.pens.adapterPens import PointToSegmentPen, SegmentToPointPen
+        from robofab.pens.adapterPens import (PointToSegmentPen,
+                                              SegmentToPointPen)
         adapter = SegmentToPointPen(pen)
         self._object.draw(adapter)
         pen = None
@@ -942,8 +944,10 @@ __all__ = [ 'RFont', 'RGlyph', 'RContour', 'RPoint', 'RInfo',
 
 if __name__ == "__main__":
     import os
-    from robofab.objects.objectsRF import RFont as _RFont
+
     from sets import Set
+
+    from robofab.objects.objectsRF import RFont as _RFont
     
     def dumpFontForgeAPI(testFontPath, printModule=False,
             printFont=False, printGlyph=False,

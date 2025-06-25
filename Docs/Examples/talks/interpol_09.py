@@ -5,6 +5,7 @@
 # stems will get their original thickness
 
 from robofab.world import CurrentFont
+
 f = CurrentFont()
 
 # these are measurements you have to take

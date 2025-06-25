@@ -9,6 +9,7 @@ Rewritten to elimate the numpy dependency
 
 import math
 
+
 def calcBounds(array):
     """Return the bounding rectangle of a 2D points array as a tuple:
     (xMin, yMin, xMax, yMax)

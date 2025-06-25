@@ -2,9 +2,9 @@
 # Usepens howto
 # DigestPointStructurePen examples
 
-from robofab.world import OpenFont
 from robofab.pens.digestPen import DigestPointStructurePen
- 
+from robofab.world import OpenFont
+
 f = OpenFont()
 
 myPen = DigestPointStructurePen()

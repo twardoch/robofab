@@ -1,10 +1,11 @@
 # robothon 2006
 # merge two fonts
  
-from robofab.world import SelectFont, NewFont
-from robofab.pens.digestPen import DigestPointPen
 from sets import Set
- 
+
+from robofab.pens.digestPen import DigestPointPen
+from robofab.world import NewFont, SelectFont
+
 font1 = SelectFont("Select base font")
 font2 = SelectFont("Select alternate font")
  

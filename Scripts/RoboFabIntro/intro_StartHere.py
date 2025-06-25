@@ -7,6 +7,7 @@
 #
 
 import robofab
+from robofab.world import world
 
 # run this script (or 'macro' as FontLab calls them)
 # if it doesn't complain, you're good to go.
@@ -16,7 +17,6 @@ import robofab
 # probably something wrong with the way you
 # installed the package.
 
-from robofab.world import world
 print world
 
 # This should print something to the "Output" window.
